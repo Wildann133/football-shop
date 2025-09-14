@@ -121,3 +121,4 @@ Berikut ini adalah langkah-langkah yang saya lakukan untuk menyelesaikan checkli
 ## Feedback untuk asisten dosen
 Pada saat sesi tutorial 1 di minggu ke-dua, asisten dosen sudah sangat baik dalam membantu mahasiswa saat ada masalah lewat discord ketika mengerjakan tutorial 1. Jadi sudah cukup baik.
 
+
