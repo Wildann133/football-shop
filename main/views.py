@@ -47,11 +47,17 @@ def show_json(request):
     return HttpResponse(json_data, content_type="application/json")
 
 def show_xml_by_id(request, product_id):
-    product_item = Shop.objects.filter(pk=product_id)
-    xml_data = serializers.serialize("xml", product_item)
-    return HttpResponse(xml_data, content_type="application/xml")
+    try:
+        product_item = Shop.objects.filter(pk=product_id)
+        xml_data = serializers.serialize("xml", product_item)
+        return HttpResponse(xml_data, content_type="application/xml")
+    except Shop.DoesNotExist:
+       return HttpResponse(status=404)
 
 def show_json_by_id(request, product_id):
-    product_item = Shop.objects.filter(pk=product_id)
-    json_data = serializers.serialize("json", product_item)
-    return HttpResponse(json_data, content_type="application/json")
+    try:
+        product_item = Shop.objects.filter(pk=product_id)
+        json_data = serializers.serialize("json", product_item)
+        return HttpResponse(json_data, content_type="application/json")
+    except Shop.DoesNotExist:
+       return HttpResponse(status=404)
