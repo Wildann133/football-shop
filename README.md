@@ -200,6 +200,13 @@ Dengan csrf_token, setiap form punya token unik yang harus cocok dengan token di
 
      * `/products/json/` → semua produk dalam format JSON.
      * `/products/xml/<int:pk>/` → produk berdasarkan ID dalam format XML.
+     * 
+<img width="1919" height="1014" alt="image" src="https://github.com/user-attachments/assets/76bc9858-01cd-4b60-b486-f9e8a52b65bb" />
+<img width="1410" height="925" alt="image" src="https://github.com/user-attachments/assets/110aefc7-b2a9-4f89-90e9-623660ddfddf" />
+<img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/0ba4142b-6a56-4773-9752-44e756951701" />
+<img width="1446" height="914" alt="image" src="https://github.com/user-attachments/assets/2e833944-8452-4613-8b2c-b7ee08c4ac79" />
+
+
 
 ## 👩‍🏫 Feedback untuk asisten dosen Tutorial 2
 untuk tutorial 2 sendiri saya tidak mengalami masalah sehingga semua berjalan lancar, jadi saya tidak punya feedback untuk asdos
