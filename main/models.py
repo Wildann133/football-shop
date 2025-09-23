@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
 class Shop(models.Model):
     CATEGORY_CHOICES = [
@@ -13,6 +14,7 @@ class Shop(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='update')
     is_featured = models.BooleanField(default=False)
     product_views = models.PositiveIntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.name
@@ -24,3 +26,4 @@ class Shop(models.Model):
     def increment_views(self):
         self.product_views += 1
         self.save()
+
