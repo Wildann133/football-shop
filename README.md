@@ -211,5 +211,105 @@ Dengan csrf_token, setiap form punya token unik yang harus cocok dengan token di
 ## 👩‍🏫 Feedback untuk asisten dosen Tutorial 2
 untuk tutorial 2 sendiri saya tidak mengalami masalah sehingga semua berjalan lancar, jadi saya tidak punya feedback untuk asdos
 
+## ❓ Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya !
+Django AuthenticationForm adalah sebuah formulir bawaan dari Django yang dirancang khusus untuk menangani proses login pengguna.
+
+**Kelebihan:**
+- Keamanannya Terjamin, Formulir ini sudah dirancang dengan praktik keamanan terbaik.
+- Menangani validasi login secara otomatis, termasuk pengecekan akun yang tidak aktif.
+- Mudah digunakan
+
+**Kekurangan:**
+- Terbatas pada field username dan password.
+- Pesan errornya terlalu generik jadi susah untuk debugging
+
+
+---
+## 2. 🔑 Perbedaan Autentikasi dan Otorisasi
+
+- **Autentikasi (Authentication)**: proses memverifikasi identitas seseorang.   
+  📌 Contoh: Anda membuktikan bahwa Anda adalah orang yang Anda klaim.
+
+- **Otorisasi (Authorization)**:  proses menentukan hak akses atau izin yang dimiliki oleh pengguna yang telah diautentikasi.  
+  📌 Contoh: Setelah sistem tahu siapa Anda, ia akan menentukan apa saja yang boleh Anda lihat atau lakukan.
+
+**Implementasi di Django:**
+- ✅ **Autentikasi**:  
+  Django menyediakan `django.contrib.auth`, yang mana di dalamnya ada `authenticate()` dan `login()` untuk memverifikasi identitas.
+- ✅ **Otorisasi**:  
+  Django memiliki sistem *permissions* dan *groups*  Setiap model secara otomatis mendapatkan izin add, change, delete, dan view. Anda bisa mengelompokkan izin-izin ini ke dalam Groups dan menetapkannya ke         pengguna.
+---
+
+## 3. 🍪 Session vs Cookies dalam Menyimpan State
+
+**Cookies**: data kecil yang disimpan di sisi *client* (browser).  
+**Session**: data pengguna yang disimpan di server, sementara browser hanya menyimpan *session ID* di dalam cookies.
+
+### ⚡ Kelebihan Cookies:
+- Mudah diimplementasikan, tidak membebani server.
+
+### ⚠️ Kekurangan Cookies:
+- Tidak aman untuk data sensitif, ukuran terbatas, dan memperlambat request jika datanya besar.
+
+### ⚡ Kelebihan Session:
+- Jauh lebih aman karena data ada di server, kapasitas besar.
+
+
+### ⚠️ Kekurangan Session:
+- Membebani memori dan penyimpanan server, bisa menjadi rumit untuk dikelola dalam arsitektur terdistribusi (load balancing).
+
+## 4. 🔐 Apakah Cookies Aman Secara Default?
+
+Secara default, cookies tidak aman. Mereka rentan terhadap beberapa serangan umum jika tidak ditangani dengan benar.
+
+**Penanganan di Django:**
+-  Opsi `HttpOnly` untuk mencegah akses cookie melalui JavaScript.  
+-  Mendukung `Secure` flag agar cookies hanya dikirim melalui HTTPS.  
+-  Mekanisme **CSRF protection** untuk mencegah serangan berbasis form.  
+-  Konfigurasi `SESSION_COOKIE_AGE`, `SESSION_COOKIE_SECURE`, dan `SESSION_COOKIE_SAMESITE` di `settings.py` untuk meningkatkan keamanan.
+
+
+---
+# 📋 Implementasi Autentikasi, Relasi User–Product, & Cookies
+
+## 1. Fitur Autentikasi
+
+- Buat view register, login_user, dan logout_user.
+- Gunakan UserCreationForm (untuk register) & AuthenticationForm (untuk login).
+- Saat login berhasil, simpan cookie last_login.
+- Saat logout, hapus cookie last_login.
+
+## 2. Relasi User–Product
+
+- Pada model Product, tambahkan field: user = models.ForeignKey(User, on_delete=models.CASCADE).
+- Di view create produk, set produk.user = request.user sebelum disimpan.
+
+## 3. Tampilan & filter
+
+- Di halaman utama, tampilkan request.user.username dan cookie last_login.
+- Buat tombol filter "All" (semua produk) dan "My" (hanya produk milik user).
+  
+## 4. Dummy Data
+- Registrasi 2 akun pengguna langsung melalui form `register`.
+- Login dengan masing-masing akun dan buat 3 data `Product` menggunakan form input yang sudah ada.
+- Dengan demikian, setiap akun memiliki 3 data dummy secara manual melalui antarmuka aplikasi.
+
+## 5. Penyesuaian Form
+- `login.html` dan `register.html` disusun dengan struktur dan class CSS yang konsisten dengan `home.html`.
+
+## 6. Verifikasi
+- Login: Cek username & cookie last_login muncul.
+- Tambah Produk: Pastikan produk terhubung dengan user yang login.
+- Filter: Uji tombol "All" dan "My", pastikan data tampil sesuai.
+- Logout: Pastikan cookie last_login terhapus.
+
+---
+
+## 👩‍🏫 Feedback untuk asisten dosen Tutorial 3
+
+saya tidak mengalami masalah dalam mengerjakan tutorial kemarin, jadi aman aman saja dan tidak ada feedback dari saya untuk sesi tutorial kali ini
+
+---
+
 
 
