@@ -5,3 +5,4 @@ class ShopForm(ModelForm):
     class Meta:
         model = Shop
         fields = ["name", "description", "category", "thumbnail", "is_featured"]
+

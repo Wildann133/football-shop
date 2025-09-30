@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
 <h1>SyBall Shop</h1>
 
 <a href="{% url 'main:create_product' %}">
@@ -37,10 +40,24 @@
 
   <p>{{ product.description|truncatewords:25 }}...</p>
 
-  <p><a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a></p>
+  <p><a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a>
+  {% if user.is_authenticated and product.user == user %}
+    <a href="{% url 'main:edit_product' product.pk %}">
+        <button>
+            Edit
+        </button>
+    </a>
+    <a href="{% url 'main:delete_product' product.pk %}">
+      <button>
+          Delete product
+      </button>
+  </a>
+    {% endif %}
+    </p>
 </div>
 
 <hr>
 {% endfor %}
 
 {% endif %}
+{% endblock content%}
