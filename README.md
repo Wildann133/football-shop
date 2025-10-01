@@ -311,5 +311,69 @@ saya tidak mengalami masalah dalam mengerjakan tutorial kemarin, jadi aman aman 
 
 ---
 
+# 📝 Tugas 5
+
+## ✅ Step by Step Implementasi
+1. Membuat fitur edit
+   - menembahkan fungsi edit_product di views.py
+   - Membuat file edit_product.html pada main/templates
+   - menambahkan button edit di card_product.html
+2. Membuat fitur delete
+   - menembahkan fungsi delete_product di views.py
+   - menambahkan button edit di card_product.html
+3. Menambahkan navigation bar
+   - membuat navbar.html di templates
+   - include navbar.html di main.html
+4. Styling Website
+   - menambahkan konfigurasi tailwind di base.html
+   - styling tiap file di main/templates
+   - styling navbar.html
+   - menambahkan css.style di folder static/css
+   - menambahkan no-product.png di folder static/image
+---
+
+## 🎨 Urutan Prioritas CSS Selector
+
+1. *Inline Style* (ditulis langsung pada elemen dengan atribut style) → prioritas tertinggi.
+
+2. *ID Selector (#id)* → lebih kuat daripada class/element.
+3. *Class, Attribute, Pseudo-class Selector* (.class, [type=text], :hover).
+4. *Element Selector & Pseudo-element* (p, h1, ::before).
+5. *!important* akan mengalahkan semua aturan lain(kalau ada)
+
+---
+
+## 📱 Pentingnya Responsive Design
+
+Responsive design memastikan tampilan website menyesuaikan ukuran layar (desktop, tablet, smartphone). Hal ini penting karena:  
+- Pengguna mengakses website dari berbagai device.  
+- Meningkatkan pengalaman pengguna (UX).  
+- SEO friendly (Google memprioritaskan web yang mobile-friendly).  
+
+🔹 **Contoh aplikasi dengan responsive design**:  
+- Twitter Web → tampilan feed dan sidebar otomatis menyesuaikan layar.   
+
+---
+
+## 📏 Margin, Border, dan Padding
+
+- **Margin** = jarak luar antar elemen.  
+- **Border** = garis tepi elemen.  
+- **Padding** = jarak dalam antara konten dengan border.  
+
+```css
+.kotak {
+  margin: 20px;              /* jarak antar elemen */
+  border: 2px solid black;   /* garis tepi */
+  padding: 15px;             /* jarak antara konten dan border */
+}
+```
 
 
+## 🧩 Flexbox vs Grid Layout
+- **Flexbox**  
+  - Digunakan untuk mengatur layout satu dimensi (baris atau kolom).
+  - Berguna untuk menyusun item yang fleksibel seperti navbar, card list, atau align vertikal/horizontal.
+- **Grid Layout**  
+  - Digunakan untuk layout dua dimensi (baris dan kolom).
+  - Cocok untuk membuat struktur kompleks seperti halaman dashboard, galeri, atau layout majalah.
