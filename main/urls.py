@@ -23,5 +23,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
 
     path('product/<uuid:id>/edit', edit_product, name='edit_product'),
-    path('news/<uuid:id>/delete', delete_news, name='delete_news'),
+    path('news/<uuid:id>/delete', delete_product, name='delete_news'),
 ] 
