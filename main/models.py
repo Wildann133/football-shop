@@ -11,10 +11,11 @@ class Shop(models.Model):
     price = models.IntegerField(default=0)
     description = models.TextField(blank=True, null=True)
     thumbnail = models.URLField(blank=True, null=True)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='update')
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='New Item')
     is_featured = models.BooleanField(default=False)
     product_views = models.PositiveIntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name
