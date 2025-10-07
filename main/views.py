@@ -196,10 +196,12 @@ def add_product_entry_ajax(request):
     thumbnail = strip_tags(request.POST.get("thumbnail", ""))
     is_featured = request.POST.get("is_featured") == 'on'
     user = request.user if request.user.is_authenticated else None
+    price = request.POST.get("price", 0)
 
     # Buat entri produk baru
     new_product = Shop(
         name=name,
+        price=price,
         description=description,
         category=category,
         thumbnail=thumbnail,
