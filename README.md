@@ -377,3 +377,62 @@ Responsive design memastikan tampilan website menyesuaikan ukuran layar (desktop
 - **Grid Layout**  
   - Digunakan untuk layout dua dimensi (baris dan kolom).
   - Cocok untuk membuat struktur kompleks seperti halaman dashboard, galeri, atau layout majalah.
+
+
+---
+#  TUGAS 6 — Javascript dan AJAX
+---
+
+## 🔄 1. Synchronous vs Asynchronous
+
+* **Synchronous (cara lama)**
+* 
+   Synchronous request berarti browser harus menunggu respon dari server sebelum dapat melanjutkan aktivitas lain. Selama proses ini, halaman web akan “terhenti” hingga permintaan selesai.
+   - Contoh: submit form biasa yang menyebabkan halaman direload penuh.
+* **Asynchronous (AJAX)**
+
+  Asynchronous request (AJAX) memungkinkan browser mengirim dan menerima data dari server di latar belakang tanpa me-reload halaman. Hal ini membuat interaksi pengguna lebih cepat dan responsif.
+  - Contoh: menambah produk menggunakan modal tanpa refresh halaman.
+
+---
+
+## 🛠 2. Alur AJAX di Django
+
+1. User klik tombol / isi form.
+2. JavaScript (`fetch`, `axios`, dll) kirim request ke URL Django.
+3. Django `views.py` proses data → balikin `JsonResponse`.
+4. JavaScript terima response → update tampilan (DOM).
+
+Intinya: **user → JS → Django → JSON → JS update DOM**
+
+---
+
+## ⚡ 3. Kenapa Pake AJAX?
+
+* Lebih **cepat** karena nggak reload full page.
+* Lebih **hemat** (cuma kirim/terima data penting).
+* Lebih **interaktif** dan terasa modern.
+* Bisa bikin fitur real-time kayak chat, live search, notifikasi.
+
+---
+
+## 🔒 4. Keamanan Login & Register
+
+Kalau main di fitur sensitif, jangan lupa:
+
+* Sertakan **CSRF Token** di tiap request.
+* Gunakan HTTPS agar data sensitif (seperti password) terenkripsi.
+* **Validasi di server tetap wajib**, jangan cuma di JS.
+* Jangan kasih pesan error yang terlalu detail.
+* Batasi response – hanya kirim data yang diperlukan, jangan kirim informasi pengguna lengkap.
+
+---
+
+## 🎨 5. Dampak ke User Experience
+
+* Interaksi terasa cepat dan halus tanpa reload.
+* Interaksi jadi **seamless**, nggak keganggu reload.
+* Dapat menampilkan toast notification atau modal dinamis sebagai feedback langsung.
+* Tapi kalau AJAX error **tanpa feedback**, user bisa bingung.
+
+---
