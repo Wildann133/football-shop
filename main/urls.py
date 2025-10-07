@@ -25,10 +25,10 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
 
     path('product/<uuid:id>/edit', edit_product, name='edit_product'),
-    path('news/<uuid:id>/delete', delete_product, name='delete_news'),
+    path('product/<uuid:id>/delete', delete_product, name='delete_product'),
 
     # main/urls.py
     path("create_product_ajax/", create_product_ajax, name="create_product_ajax"),
-    path('create-news-ajax', add_product_entry_ajax, name='add_product_entry_ajax'),
+    path('create-product-ajax', add_product_entry_ajax, name='add_product_entry_ajax'),
 
 ] 
