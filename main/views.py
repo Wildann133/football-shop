@@ -15,6 +15,8 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
+from django.contrib.auth.models import User
+
 
 
 
@@ -211,4 +213,40 @@ def add_product_entry_ajax(request):
     new_product.save()
 
     return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+@require_POST
+def delete_product_ajax(request, id):
+    try:
+        product = Shop.objects.get(pk=id, user=request.user)
+        product.delete()
+        return JsonResponse({'success': True, 'message': 'Product deleted successfully!'})
+    except Shop.DoesNotExist:
+        return JsonResponse({'success': False, 'message': 'Product not found or unauthorized'}, status=404)
+
+
+@csrf_exempt
+@require_POST
+def login_ajax(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        login(request, user)
+        return JsonResponse({'success': True, 'message': 'Login successful'})
+    return JsonResponse({'success': False, 'message': 'Invalid credentials'}, status=401)
+
+
+@csrf_exempt
+@require_POST
+def register_ajax(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({'success': False, 'message': 'Username already taken'}, status=400)
+    user = User.objects.create_user(username=username, password=password)
+    return JsonResponse({'success': True, 'message': 'Account created successfully'})
+
+
 
